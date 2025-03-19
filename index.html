@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+       }  
+
+       body{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        background: linear-gradient(135deg,#6a11cb,#2575fc);
+        color: white;
+        overflow-x: hidden;
+       }
+       nav{
+        background: rgba(0,0,0,0.8);
+        padding: 15px;
+        position: fixed;
+        width: 100%;
+        top:0;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: all 0.3s;
+        z-index: 1000;
+       }
+       nav ul{
+        list-style: none;
+        display: flex;
+       }
+       nav ul li{
+        margin: 0 20px;
+       }
+       nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+       }
+       nav ul li a:hover{
+        color: #ffcc00;
+       }
+       section{
+        padding: 100px 20px;
+        min-height: 100vh;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(50px);
+        transition:opacity 0.6s ease-out, transform 0.6s ease-out;
+       }
+       section.show{
+        opacity: 1;
+        transform: translateY(0);
+       }
+       #home{
+        background: linear-gradient(to right,#ff6a00,#ee0979);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+       }
+       #home img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        border: 4px solid white;
+       }
+       #home h1{
+        font-size: 3rem;
+        animation: fadein 1.5s ease-in-out;
+       }
+       .btn{
+        background: #ffcc00;
+        color:white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        display: inline-block;
+       }
+       .btn:hover{
+        background: #ffdd44;
+        transform: scale(1.05);
+       }
+       #projects{
+        background: linear-gradient(to right,#12c2e9,#c471ed,#f64f59);
+        padding: 50px 20px;
+       }
+       #contact{
+        background: linear-gradient(to right,#00b09b,#96c93d);
+        padding: 50px 20px;
+       }
+       @keyframes fadeIn{
+        from{opacity: 0;}
+        to {opacity: 1;}
+       }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <img src="photo.jpg.jpeg" alt="Your Picture">
+        <h1>Hi,I'm Suman Das</h1>
+        <p>Frontend Developer | UI/UX Enthusiast</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <section id="project">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <h1 >Tic-Tac-Toe </h1>
+            <p>This is a simple Tic-Tac-Toe game built using HTML, CSS, and JavaScript. It is a two-player game where users take turns marking spaces in a 3×3 grid with either an "X" or an "O". The objective is to get three marks in a row (horizontally, vertically, or diagonally) before the opponent <br>
+                
+                Features:
+                ✅ Interactive UI: Clickable grid cells for making moves.
+                ✅ Winning Logic: Detects when a player wins or if the game ends in a draw.
+                ✅ Game Reset Option: Resets the board to play again.
+                ✅ Smooth Transitions & UI Effects: Uses animations for better user experience.
+                ✅ Responsive Design: Works on different screen sizes </p>
+        </div>
+        <div class="project">
+            <h1>Stopwatch</h1>
+            <p>This Stopwatch project is a simple yet functional web-based timer built using HTML, CSS, and JavaScript. It allows users to start, pause, and reset the time with precision. The stopwatch displays elapsed time in hours, minutes, seconds, and milliseconds.  <br>
+
+                Features:
+                ✅ Start, Stop & Reset Controls – Users can start, pause, and reset the stopwatch with buttons.
+                ✅ Real-Time Timer – Updates every millisecond for accuracy.
+                ✅ Lap Feature (Optional) – Users can record lap times while the stopwatch is running.
+                ✅ Smooth UI Animations – Button hover effects and transitions for a better experience.
+                ✅ Responsive Design – Works well on desktops, tablets, and mobile devices.</p>
+        </div>
+     </section>
+
+     <section id="contact">
+        <h2>Contact</h2>
+        <p>Email:suman992005@gmail.com</p>
+    </section>
+
+    <script>
+        document.querySelectorAll('nav ul li a').forEach(anchor =>{
+            anchor.addEventListener('click',function(e){
+                e.preventDefault();
+                const targetID =this.getAttribute('href').substring(1);
+                document.getElementById(targetID).scrollIntoView({behavior:'smooth'});
+
+            });
+        });
+
+        document.addEventListener("scroll",function(){
+            document.querySelectorAll("section").forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if(sectionTop < window.innerHeight *0.85){
+                    section.classList.add("show");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
